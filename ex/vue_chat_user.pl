@@ -1,7 +1,7 @@
 use Mojolicious::Lite -signatures;
 use Mojo::Pg;
 
-helper pg => sub { state $pg = Mojo::Pg->new('postgresql://test:test@/test') };
+helper pg => sub { state $pg = Mojo::Pg->new($ENV{DATABASE_URL}) };
 
 get '/' => 'chat';
 
